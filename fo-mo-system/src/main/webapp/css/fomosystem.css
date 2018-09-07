@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+body {
+  font-family: Courier New;
+}
+
+.jumbotron {
+	background-color: #a7c6eb;
+}
+
+/* #table2 {
+    border-collapse: separate;
+    border-spacing: 15px 50px;
+} */
