@@ -3,16 +3,16 @@ package com.fomosystem.model;
 public class Login {
 
 	private String username;
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	private String password;
-	private String application;
-
-	public String getApplication() {
-		return application;
-	}
-
-	public void setApplication(String application) {
-		this.application = application;
-	}
+	private String role;
 
 	public String getUsername() {
 		return username;

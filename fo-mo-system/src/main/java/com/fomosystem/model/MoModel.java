@@ -14,8 +14,29 @@ public class MoModel {
 	private String exchange;
 	private String price;
 	private String settlementDate;
+	private String quantity;
+	private String systemname;
+	private String rate;
 	
 	
+	public String getRate() {
+		return rate;
+	}
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+	public String getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	public String getSystemname() {
+		return systemname;
+	}
+	public void setSystemname(String systemname) {
+		this.systemname = systemname;
+	}
 	public String getFees() {
 		return fees;
 	}

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/fomosystem.css">
 </head>
 <body>
+<% String role = String.valueOf(request.getSession().getAttribute("role")); %>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -26,18 +27,36 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a id="homeId">Home</a></li>
-        <li><a id="foId">FOSystem</a></li>
-        <li><a id="moId">MOSystem</a></li>
+        <% if("admin".equalsIgnoreCase(role)){
+            %>
+        	<li><a id="foId">FOSystem</a></li>
+            <li><a id="moId">MOSystem</a></li>
+            <%
+        }
+        %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Log Out</a></li>
+        <li><a href="/fomosystem/logout"><span class="glyphicon glyphicon-user"></span>Log Out</a></li>
       </ul>
     </div>
   </div>
 </nav>
   
 <div class="container">
-  <div id="view" style="background-color: #E6E6FA;"></div>
+<span>${message}</span>
+  <% 
+  //String role = request.getParameter("role");
+  if("FO".equalsIgnoreCase(role)){ %>
+	  <%@ include file="fopage.jsp" %>
+  <% }else if("MO".equalsIgnoreCase(role)){ %>
+	  <%@ include file="mopage.jsp" %>
+  <% 
+  }else{
+	  %>
+	  <div id="view" style="background-color: #E6E6FA;"></div>
+	  <%
+	  }
+  %>
 </div>
 
 </body>

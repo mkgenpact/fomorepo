@@ -1,64 +1,63 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@ page isELIgnored="false" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
- 	<head>
-              <meta charset="utf-8">
-			  <meta name="viewport" content="width=device-width, initial-scale=1">
-			  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-			  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-			  <script src="js/fomosystem.js"></script>
-              <title>Login</title>
-	</head>
-	<body>
-	        <div class="container">
-	        <div class="jumbotron">	
-	         <div class="panel panel-primary">
-			      <div class="panel-heading">Login</div>
-			      <div class="panel-body">
-                <table align="center">
-                    <tr>
-                        <td>
-                            <label for="username"><b>Username</b></label>
-                        </td>
-                        <td>
-                            <input type="text"  id="username" placeholder="Enter Username" name="username" required>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="password"><b>Password</b></label>
-                        </td>
-                        <td>
-                           <input type="password" id="password" placeholder="Enter Password" name="password" required>
-                        </td>
-                    </tr>
-                    <tr>
-                      <td><label for="application"><b>Application</b></label></td>
-				      <td>
-				           <select name="application" id="application">
-							    <option value="recontool">recontool</option>
-							    <option value="fo">fo</option>
-							    <option value="mo">mo</option>
-  							</select>
-				      </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td align="left">
-                             <button type="button" id="login">Login</button>
-                        </td>
-                    </tr>
-                    <tr></tr>
-                </table>
-                <div  align="center"id ="message" style="font-style: italic; color: red;"></div>
-			      </div>
-	    	</div>
-	    	</div>
-	    	</div>
-            
-	 </body>
- </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/query.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: #ead5ca">
+<div class="container">
+   <div style="width: 350px;height: 350px;border-radius:5px;background-color: #a0a9aa;margin-left: 300px;margin-top: 150px;">
+    <form:form method="POST" modelAttribute="login">
+   		 <h2 class="form-heading">Log in</h2>
+   		<p><span style="background-color: green;">${message}</span></p>
+    	<table  style="border-collapse: separate;border-spacing: 15px 20px;">
+    	<tr>
+    		<td><form:label path = "username">username</form:label></td>
+    		<td><form:input path="username" class="form-control"/></td>
+    	</tr>
+    	<tr>
+    		<td><form:label path = "password">password</form:label></td>
+    		<td><form:password path="password"  class="form-control"/></td>
+    	</tr>
+    	<tr>
+    		<td>
+    		<form:label path="role">Role:</form:label>
+    		</td>
+    		<td>
+    		<form:select class="form-control" path="role">
+		        <option>MO</option>
+		        <option>FO</option>
+		        <option>ADMIN</option>
+      		</form:select>
+    		</td>
+    	</tr>
+    	<tr>
+    	<td colspan="2">
+    		<span style="background-color: red">${error}</span>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    	</td>
+    	</tr>
+    	<tr>
+    	<td>
+    		<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+    	</td>
+    	</tr>   
+		</table>
+    </form:form>
+</div>
+</div>
+</body>
+</html>
+
+
+
+

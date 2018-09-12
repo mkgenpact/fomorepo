@@ -9,7 +9,15 @@ public class FoModel {
 	private String tradeDate;
 	private String tradeID;
 	private String status;
+	private String systemname;
 	
+	
+	public String getSystemname() {
+		return systemname;
+	}
+	public void setSystemname(String systemname) {
+		this.systemname = systemname;
+	}
 	public String getCounterParty() {
 		return counterParty;
 	}

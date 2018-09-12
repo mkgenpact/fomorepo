@@ -8,19 +8,23 @@
 <div class="panel-heading">Trade Application Middle Office</div>
 <div class="panel-body">
 		<div style="padding-bottom: 20px;">
-	        <form class="form-inline" action="/action_page.php">
+	        <form class="form-inline" action="/fomosystem/loadMoData" method="POST">
 			  <div class="form-group">
-			    <label for="email">Trade Id</label>
-			    <input type="email" class="form-control" id="email">
+			    <label for="tradeID">Trade Id</label>
+			    <input type="tradeID" class="form-control" id="tradeId" name="tradeId">
 			  </div>
-			  <button type="button" class="btn btn-default">LoadTrade</button>
+			  <button type="submit" class="btn btn-default">LoadTrade</button>
 			</form>
 		</div>
-		<form:form method = "POST" action = "/HelloWeb/addStudent">
+		<form:form method = "POST" action = "/fomosystem/insertOrUpdateMo" modelAttribute="moModel">
          <table style="border-collapse: separate;border-spacing: 15px 20px;">
             <tr>
+               <td><form:label path = "tradeID">TradeID</form:label></td>
+               <td><form:input path = "tradeID" class="form-control"  readonly="true"/></td>
+            </tr>
+            <tr>
                <td><form:label path = "counterParty">CounterParty</form:label></td>
-               <td><form:input path = "counterParty" class="form-control" /></td>
+               <td><form:input path = "counterParty" class="form-control" readonly="true"/></td>
                <td><form:label path = "fees">Fees</form:label></td>
                <td><form:input path = "fees" class="form-control" /></td>
             </tr>
