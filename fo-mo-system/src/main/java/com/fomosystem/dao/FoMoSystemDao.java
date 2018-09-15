@@ -48,8 +48,8 @@ public class FoMoSystemDao {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				PreparedStatement fomosystems = con
 						.prepareStatement("UPDATE fomosystems SET currency = ?,amount=?,buyorsell=?,"
-								+ " tradedate=?,fees=?,quantity=?,exchange=?,price=?,"
-								+ " rate=?,settlementdate=? WHERE tradeid =? and systemname=? ");
+										+ " tradedate=?,fees=?,quantity=?,exchange=?,price=?,"
+										+ " rate=?,settlementdate=?,mtmvalue=? WHERE tradeid =? and systemname=? ");
 				fomosystems.setString(1, momodel.getCurrency());
 				fomosystems.setString(2, momodel.getAmount());
 				fomosystems.setString(3, momodel.getBuySell());
@@ -60,8 +60,9 @@ public class FoMoSystemDao {
 				fomosystems.setString(8, momodel.getPrice());
 				fomosystems.setString(9, momodel.getRate());
 				fomosystems.setString(10, momodel.getSettlementDate());
-				fomosystems.setInt(11, Integer.valueOf(momodel.getTradeID()));
-				fomosystems.setString(12, momodel.getSystemname());
+				fomosystems.setString(11, momodel.getMtmValue());
+				fomosystems.setInt(12, Integer.valueOf(momodel.getTradeID()));
+				fomosystems.setString(13, momodel.getSystemname());
 				return fomosystems;
 			}
 		});
@@ -106,6 +107,7 @@ public class FoMoSystemDao {
 				moModel.setFees(rs.getString("fees"));
 				moModel.setExchange(rs.getString("exchange"));
 				moModel.setPrice(rs.getString("price"));
+				moModel.setMtmValue(rs.getString("mtmvalue"));
 				moModel.setSettlementDate(rs.getString("settlementdate"));
 				return moModel;
 			}

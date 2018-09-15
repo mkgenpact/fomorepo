@@ -91,7 +91,7 @@ public class MainApplicationController {
 	@PostMapping("/loadFoData")
 	public String loadFoData(HttpServletRequest request,Map<String, Object> model) {
 		String tradeId = request.getParameter("tradeId");
-		FoModel fomodel = fomodao.loadFoData(new Integer(tradeId), "fo");
+		FoModel fomodel = fomodao.loadFoData(new Integer(tradeId), "FO");
 		model.put("foModel", fomodel);
 		return "index";
 	}
@@ -99,7 +99,7 @@ public class MainApplicationController {
 	@PostMapping("/loadMoData")
 	public String loadMoData(HttpServletRequest request,Map<String, Object> model) {
 		String tradeId = request.getParameter("tradeId");
-		MoModel momodel = fomodao.loadMoData(new Integer(tradeId), "fo");
+		MoModel momodel = fomodao.loadMoData(new Integer(tradeId), "MO");
 		model.put("moModel", momodel);
 		return "index";
 	}
