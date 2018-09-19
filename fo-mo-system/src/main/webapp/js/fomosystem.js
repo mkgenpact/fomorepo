@@ -24,6 +24,6 @@ $(function(){
 	});
 	$("#homeId").click(function(){
 		$('#view').html("<P><h5>Front Office Page</h5></p>");
-	});z
+	});
 		
 });
