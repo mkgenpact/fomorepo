@@ -13,9 +13,10 @@
 			    <label for="tradeID">Trade Id</label>
 			    <input type="tradeID" class="form-control" id="tradeId" name="tradeId">
 			  </div>
-			  <button type="submit" class="btn btn-default">LoadTrade</button>
+			  <button type="submit" class="btn btn-info">LoadTrade</button>
 			</form>
 		</div>
+		<div id="borderID"></div>
 		<form:form method = "POST" action = "/fomosystem/insertOrUpdateMo" modelAttribute="moModel">
          <table style="border-collapse: separate;border-spacing: 15px 20px;">
             <tr>
@@ -60,7 +61,7 @@
             </tr>
             <tr>
                <td colspan = "2">
-                  <input type = "submit" value = "Update"/>
+                  <input type = "submit" value = "Save" class="btn btn-success"/>
                </td>
             </tr>
          </table>  
