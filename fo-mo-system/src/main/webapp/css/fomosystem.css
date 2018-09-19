@@ -8,6 +8,18 @@ body {
 	background-color: #a7c6eb;
 }
 
+.navbar{
+	background-color: #205081;
+	
+}
+#fomoheader{
+	color: #fff;
+}
+
+#borderID{
+	border-bottom: 1px solid #2e3d54;
+}
+
 /* #table2 {
     border-collapse: separate;
     border-spacing: 15px 50px;
