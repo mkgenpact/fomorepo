@@ -13,9 +13,9 @@
   <script src="js/bootstrap.min.js"></script>
 </head>
 
-<body style="background-color: #ead5ca">
+<body>
 <div class="container">
-   <div style="width: 350px;height: 350px;border-radius:5px;background-color: #a0a9aa;margin-left: 300px;margin-top: 150px;">
+   <div style="width: 350px;height: 350px;border-radius:5px;background-color: #E6E6FA;margin-left: 300px;margin-top: 150px;">
     <form:form method="POST" modelAttribute="login">
    		 <h2 class="form-heading">Log in</h2>
    		<p><span style="background-color: green;">${message}</span></p>
@@ -36,7 +36,6 @@
     		<form:select class="form-control" path="role">
 		        <option>MO</option>
 		        <option>FO</option>
-		        <option>ADMIN</option>
       		</form:select>
     		</td>
     	</tr>

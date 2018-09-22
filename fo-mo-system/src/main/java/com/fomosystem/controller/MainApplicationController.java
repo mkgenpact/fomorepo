@@ -25,13 +25,13 @@ public class MainApplicationController {
 	@RequestMapping("/loadFoPage")
 	public ModelAndView loadFoPage(HttpServletRequest request,Map<String, Object> model) {
 		
-		return new ModelAndView("fopage", "command", new FoModel());
+		return new ModelAndView("fopage", "foModel", new FoModel());
 	}
 	
 	@RequestMapping("/loadMoPage")
 	public ModelAndView loadMoPage(HttpServletRequest request,Map<String, Object> model) {
 		
-		 return new ModelAndView("mopage", "command", new MoModel());
+		 return new ModelAndView("mopage", "moModel", new MoModel());
 	}
 	
 	@RequestMapping(value = "/login")
@@ -74,7 +74,7 @@ public class MainApplicationController {
 			Map<String, Object> model) {
 		fomodel.setSystemname("FO");
 		fomodao.updateFo(fomodel);
-		model.put("message", "successfully create or updated");
+		model.put("message", "Trade : "+fomodel.getTradeID() +" has been successfully updated");
 		
 		return "index";
 	}
@@ -84,7 +84,7 @@ public class MainApplicationController {
 			Map<String, Object> model) {
 		momodel.setSystemname("MO");
 		fomodao.updateMo(momodel);
-		model.put("message", "successfully create or updated");
+		model.put("message", "Trade : "+momodel.getTradeID() +" has been successfully updated");
 		return "index";
 	}
 	
@@ -92,6 +92,10 @@ public class MainApplicationController {
 	public String loadFoData(HttpServletRequest request,Map<String, Object> model) {
 		String tradeId = request.getParameter("tradeId");
 		FoModel fomodel = fomodao.loadFoData(new Integer(tradeId), "FO");
+		if(fomodel == null){
+			fomodel = new FoModel();
+			model.put("message", "trade id : "+tradeId+ " not found");
+		}
 		model.put("foModel", fomodel);
 		return "index";
 	}
@@ -100,7 +104,11 @@ public class MainApplicationController {
 	public String loadMoData(HttpServletRequest request,Map<String, Object> model) {
 		String tradeId = request.getParameter("tradeId");
 		MoModel momodel = fomodao.loadMoData(new Integer(tradeId), "MO");
-		model.put("moModel", momodel);
+		if(momodel == null){
+			momodel = new MoModel();
+			model.put("message", "trade id : "+tradeId+ " not found");
+		}
+		model.put("moModel", momodel);	
 		return "index";
 	}
 	

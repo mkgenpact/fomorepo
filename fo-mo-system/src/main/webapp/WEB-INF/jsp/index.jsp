@@ -43,7 +43,7 @@
 </nav>
   
 <div class="container">
-<span>${message}</span>
+<span style="background-color:#FF6347;height: 12px;color: white;">${message}</span>
   <% 
   //String role = request.getParameter("role");
   if("FO".equalsIgnoreCase(role)){ %>

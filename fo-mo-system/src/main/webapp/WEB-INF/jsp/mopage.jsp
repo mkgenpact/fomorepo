@@ -22,6 +22,8 @@
             <tr>
                <td><form:label path = "tradeID">TradeID</form:label></td>
                <td><form:input path = "tradeID" class="form-control"  readonly="true"/></td>
+               <td><form:label path = "status">Status</form:label></td>
+               <td><form:input path = "status" class="form-control"/></td>
             </tr>
             <tr>
                <td><form:label path = "counterParty">CounterParty</form:label></td>

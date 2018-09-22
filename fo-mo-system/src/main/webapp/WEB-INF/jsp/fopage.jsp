@@ -49,6 +49,10 @@
                <td><form:label path = "tradeDate">TradeDate:</form:label></td>
                <td><form:input path = "tradeDate" class="form-control" /></td>
             </tr>
+             <tr>
+               <td><form:label path = "status">Status:</form:label></td>
+               <td><form:input path = "Status" class="form-control" /></td>
+            </tr>
             <tr>
                <td colspan = "2">
                   <input type = "submit" value = "Save" class="btn btn-success"/>

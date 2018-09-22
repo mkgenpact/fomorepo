@@ -28,13 +28,14 @@ public class FoMoSystemDao {
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				 PreparedStatement fomosystems = con.prepareStatement(
 					        "UPDATE fomosystems SET currency = ?,amount=?,buyorsell=?,"
-					        + " tradedate=? WHERE tradeid =? and systemname=? ");
+					        + " tradedate=?, status=? WHERE tradeid =? and systemname=? ");
 				 fomosystems.setString(1, fomodel.getCurrency());
 				 fomosystems.setString(2, fomodel.getAmount());
 				 fomosystems.setString(3, fomodel.getBuySell());
 				 fomosystems.setString(4, fomodel.getTradeDate());
-				 fomosystems.setInt(5, Integer.valueOf(fomodel.getTradeID()));
-				 fomosystems.setString(6, fomodel.getSystemname());
+				 fomosystems.setString(5, fomodel.getStatus());
+				 fomosystems.setInt(6, Integer.valueOf(fomodel.getTradeID()));
+				 fomosystems.setString(7, fomodel.getSystemname());
 				 return fomosystems;
 			}
 		});
@@ -49,7 +50,7 @@ public class FoMoSystemDao {
 				PreparedStatement fomosystems = con
 						.prepareStatement("UPDATE fomosystems SET currency = ?,amount=?,buyorsell=?,"
 										+ " tradedate=?,fees=?,quantity=?,exchange=?,price=?,"
-										+ " rate=?,settlementdate=?,mtmvalue=? WHERE tradeid =? and systemname=? ");
+										+ " rate=?,settlementdate=?,mtmvalue=?,status=? WHERE tradeid =? and systemname=? ");
 				fomosystems.setString(1, momodel.getCurrency());
 				fomosystems.setString(2, momodel.getAmount());
 				fomosystems.setString(3, momodel.getBuySell());
@@ -61,8 +62,9 @@ public class FoMoSystemDao {
 				fomosystems.setString(9, momodel.getRate());
 				fomosystems.setString(10, momodel.getSettlementDate());
 				fomosystems.setString(11, momodel.getMtmValue());
-				fomosystems.setInt(12, Integer.valueOf(momodel.getTradeID()));
-				fomosystems.setString(13, momodel.getSystemname());
+				fomosystems.setString(12, momodel.getStatus());
+				fomosystems.setInt(13, Integer.valueOf(momodel.getTradeID()));
+				fomosystems.setString(14, momodel.getSystemname());
 				return fomosystems;
 			}
 		});
@@ -83,11 +85,14 @@ public class FoMoSystemDao {
 				foModel.setSystemname("systemname");
 				foModel.setCurrency(rs.getString("currency"));
 				foModel.setTradeDate(rs.getString("tradedate"));
+				foModel.setStatus(rs.getString("status"));
 				return foModel;
 			}
 			
 		}, tradeId,systemname);
-		return (fomode!=null)?fomode.get(0):null;
+		if(fomode == null || fomode.size()==0)
+			return null;
+		return fomode.get(0);
 	}
 	
 	public MoModel loadMoData(int tradeId,String systemname) {
@@ -109,10 +114,14 @@ public class FoMoSystemDao {
 				moModel.setPrice(rs.getString("price"));
 				moModel.setMtmValue(rs.getString("mtmvalue"));
 				moModel.setSettlementDate(rs.getString("settlementdate"));
+				moModel.setStatus(rs.getString("status"));
 				return moModel;
 			}
 			
 		}, tradeId,systemname);
-		return (momode!=null)?momode.get(0):null;
+		
+		if(momode == null || momode.size()==0)
+			return null;
+		return momode.get(0);
 	}
 }
